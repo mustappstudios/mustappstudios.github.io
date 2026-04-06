@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gizlilik Politikası — MustApp Studio</title>
+  <meta name="description" content="MustApp Studio uygulamaları için Gizlilik Politikası. Harcama Takip, Nihilist Penguin ve Kismet uygulamalarını kapsar." />
+  <meta name="theme-color" content="#08080F" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #08080F;
+      --surface:   #0F1A18;
+      --border:    rgba(255,255,255,0.07);
+      --primary:   #00C6A9;
+      --text:      #E8F0EF;
+      --muted:     rgba(232,240,239,0.55);
+      --radius:    16px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    header a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #00C6A9, #009E88);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      color: #000;
+      flex-shrink: 0;
+    }
+    .logo-text {
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 0.2px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 64px 24px 48px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(0,198,169,0.12);
+      color: var(--primary);
+      border: 1px solid rgba(0,198,169,0.25);
+      border-radius: 100px;
+      padding: 5px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--primary); }
+    .hero p { color: var(--muted); font-size: 16px; max-width: 520px; margin: 0 auto; }
+    .updated { margin-top: 14px; font-size: 13px; color: rgba(232,240,239,0.35); }
+
+    main { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+    .summary-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .summary-card .icon { font-size: 24px; line-height: 1; }
+    .summary-card strong { font-size: 14px; font-weight: 700; color: var(--text); }
+    .summary-card span { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    section { margin-bottom: 48px; }
+    .section-number {
+      font-size: 12px; font-weight: 700; color: var(--primary);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;
+    }
+    h2 { font-size: 22px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.2px; }
+    p { color: var(--muted); margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+
+    .info-box {
+      background: rgba(0,198,169,0.07);
+      border: 1px solid rgba(0,198,169,0.18);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin: 16px 0;
+    }
+    .info-box p { color: rgba(232,240,239,0.75); margin: 0; font-size: 15px; }
+    .info-box strong { color: var(--primary); }
+
+    ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+    ul li { color: var(--muted); padding-left: 22px; position: relative; font-size: 15px; }
+    ul li::before { content: "→"; position: absolute; left: 0; color: var(--primary); font-size: 13px; top: 2px; }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .app-chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .app-chip img { width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0; }
+    .app-chip span { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.3; }
+
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .contact-box strong { font-size: 16px; font-weight: 700; }
+    .contact-box a { color: var(--primary); text-decoration: none; font-size: 15px; }
+    .contact-box a:hover { text-decoration: underline; }
+    .contact-box p { margin: 0; font-size: 14px; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 13px;
+      color: rgba(232,240,239,0.3);
+    }
+    footer a { color: var(--primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="/">
+      <div class="logo-mark">M</div>
+      <span class="logo-text">MustApp Studio</span>
+    </a>
+  </header>
+
+  <div class="hero">
+    <div class="hero-badge">Yasal</div>
+    <h1>Gizlilik <span>Politikası</span></h1>
+    <p>Gizliliğin bir hak olduğuna inanıyoruz. Ne topladığımızı, neden ve nasıl kullandığımızı açıkça paylaşıyoruz.</p>
+    <p class="updated">Son güncelleme: 7 Nisan 2026</p>
+  </div>
+
+  <main>
+
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="icon">🔒</div>
+        <strong>Kişisel veri yok</strong>
+        <span>İsim, e-posta veya kimlik bilgisi gibi kişisel veri toplamıyoruz.</span>
+      </div>
+      <div class="summary-card">
+        <div class="icon">📱</div>
+        <strong>Veri cihazında kalır</strong>
+        <span>Harcamalar ve uygulama verileri yalnızca cihazında yerel olarak saklanır.</span>
+      </div>
+      <div class="summary-card">
+        <div class="icon">📊</div>
+        <strong>Anonim analitik</strong>
+        <span>Yalnızca uygulamayı geliştirmek için anonim kullanım verisi toplanır.</span>
+      </div>
+      <div class="summary-card">
+        <div class="icon">🚫</div>
+        <strong>Veri satışı yok</strong>
+        <span>Verilerini hiçbir üçüncü tarafa satmıyoruz, kiralamıyoruz veya devretmiyoruz.</span>
+      </div>
+    </div>
+
+    <section>
+      <div class="section-number">01</div>
+      <h2>Bu Politikanın Kapsamı</h2>
+      <p>Bu Gizlilik Politikası, <strong>MustApp Studio</strong> tarafından Google Play Store'da yayımlanan tüm mobil uygulamaları kapsar:</p>
+      <div class="apps-grid">
+        <div class="app-chip">
+          <img src="/icons/harcamatakip_icon.png" alt="Harcama Takip" />
+          <span>Harcama Takip</span>
+        </div>
+        <div class="app-chip">
+          <img src="/icons/nihilistpenguin_icon.png" alt="Nihilist Penguin" />
+          <span>Nihilist Penguin</span>
+        </div>
+        <div class="app-chip">
+          <img src="/icons/kismet_icon.png" alt="Kismet" />
+          <span>Kismet</span>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section>
+      <div class="section-number">02</div>
+      <h2>Topladığımız Veriler</h2>
+
+      <p><strong>Cihazında saklanan veriler (bize iletilmez):</strong></p>
+      <ul>
+        <li>Uygulama içinde oluşturduğun harcamalar, kategoriler ve tercihler</li>
+        <li>Seçili para birimi ve tema gibi uygulama ayarları</li>
+      </ul>
+
+      <div class="info-box">
+        <p><strong>Önemli:</strong> Girdiğin tüm kişisel veriler (harcama kayıtları gibi) yalnızca cihazında yerel depolamada saklanır. Bu verilere erişimimiz yoktur.</p>
+      </div>
+
+      <p style="margin-top: 16px;"><strong>Otomatik olarak toplanan anonim veriler:</strong></p>
+      <ul>
+        <li>Anonim kullanım olayları (hangi ekranların ziyaret edildiği, hangi özelliklerin kullanıldığı)</li>
+        <li>Hataları düzeltmemize yardımcı olan çökme raporları</li>
+        <li>Cihaz türü ve işletim sistemi sürümü (uyumluluk amacıyla)</li>
+      </ul>
+
+      <p style="margin-top: 16px;">Bu anonim veriler <strong>Firebase Analytics</strong> ve <strong>Firebase Crashlytics</strong> (Google LLC) aracılığıyla toplanır. Kişiyi tanımlayıcı hiçbir bilgiyle ilişkilendirilmez. Reklam kimliği (Advertising ID) kullanmıyoruz.</p>
+    </section>
+
+    <hr />
+
+    <section>
+      <div class="section-number">03</div>
+      <h2>Verileri Nasıl Kullanıyoruz</h2>
+      <ul>
+        <li>Hangi özelliklerin en çok kullanıldığını anlayarak uygulamayı geliştirmek</li>
+        <li>Çökmeleri ve teknik sorunları tespit edip düzeltmek</li>
+        <li>Gelecekteki özellikler hakkında bilinçli kararlar almak</li>
+      </ul>
+      <p style="margin-top: 16px;">Hiçbir veriyi reklam, profilleme veya uygulamayı iyileştirme dışındaki amaçlar için kullanmıyoruz.</p>
+    </section>
+
+    <hr />
+
+    <section>
+      <div class="section-number">04</div>
+      <h2>Üçüncü Taraf Hizmetler</h2>
+      <p>Uygulamalarımız aşağıdaki üçüncü taraf hizmetleri kullanmaktadır; her biri kendi gizlilik politikasına tabidir:</p>
+      <ul>
+        <li><strong>Firebase Analytics</strong> (Google LLC) — anonim kullanım analitiği</li>
+        <li><strong>Firebase Crashlytics</strong> (Google LLC) — çökme raporlama</li>
+      </ul>
+      <p style="margin-top: 16px;">Daha fazla bilgi için <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color: var(--primary);">Google'ın Gizlilik Politikası</a>'na bakabilirsin.</p>
+    </section>
+
+    <hr />
+
+    <section>
+      <div class="section-number">05</div>
+      <h2>Veri Saklama ve Silme</h2>
+      <p>Cihazında saklanan veriler, uygulama içinden (Ayarlar → Tüm Verileri Sil) silene ya da uygulamayı kaldırana kadar saklanır.</p>
+      <p>Anonim analitik veriler, Firebase'in Google veri saklama politikaları doğrultusunda tutulur (varsayılan olarak 14 aya kadar).</p>
+    </section>
+
+    <hr />
+
+    <section>
+      <div class="section-number">06</div>
+      <h2>Çocukların Gizliliği</h2>
+      <p>Uygulamalarımız 13 yaşın altındaki çocuklara yönelik değildir. Çocuklardan bilerek herhangi bir bilgi toplamıyoruz. Bir çocuğun uygulamamız aracılığıyla bilgi sağladığını düşünüyorsan lütfen bizimle iletişime geç.</p>
+    </section>
+
+    <hr />
+
+    <section>
+      <div class="section-number">07</div>
+      <h2>Politika Değişiklikleri</h2>
+      <p>Bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Değişiklikler, sayfanın üstündeki güncel tarihle birlikte bu sayfada yansıtılacaktır.</p>
+    </section>
+
+    <hr />
+
+    <section>
+      <div class="section-number">08</div>
+      <h2>İletişim</h2>
+      <p>Bu Gizlilik Politikası hakkında sorularınız için bizimle iletişime geçebilirsin:</p>
+      <div class="contact-box">
+        <strong>MustApp Studio</strong>
+        <a href="mailto:mustappstudio@gmail.com">mustappstudio@gmail.com</a>
+        <p style="color: var(--muted); margin-top: 4px;">48 saat içinde yanıt vermeye çalışıyoruz.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 MustApp Studio · <a href="/">mustappstudio.com</a></p>
+  </footer>
+
+</body>
+</html>
